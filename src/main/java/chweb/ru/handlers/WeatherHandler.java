@@ -49,7 +49,7 @@ public class WeatherHandler extends AHandler {
         if (message.getLocation() != null) {
             currentWeatherByLocationHandler(message);
         } else if (message.hasText() && !StringUtils.isEmpty(message.getText())) {
-            switch (message.getText()) {
+            switch (message.getText().replaceAll("@" + getBotUsername(), "")) {
                 case START_COMMAND:
                     sendMessage(message.getChatId(), START_MSG);
                     break;
